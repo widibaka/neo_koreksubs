@@ -1,0 +1,21 @@
+
+
+
+{
+	"sEmptyTable":	 "Tidak ada data",
+	"sProcessing":   "<div class=\"spinner-border ext-primary\" role=\"status\"><span class=\"visually-hidden\">Loading...</span> </div> ",
+	"sLengthMenu":   "Tampilkan _MENU_ entri",
+	"sZeroRecords":  "Data tidak ditemukan",
+	"sInfo":         "_START_ - _END_ dari _TOTAL_",
+	"sInfoEmpty":    "0 - 0 dari 0",
+	"sInfoFiltered": "(_MAX_ total)",
+	"sInfoPostFix":  "",
+	"sSearch":       "Cari:",
+	"sUrl":          "",
+	"oPaginate": {
+		"sFirst":    "Pertama",
+		"sPrevious": "Sebelumnya",
+		"sNext":     "Berikutnya",
+		"sLast":     "Terakhir"
+	}
+}
