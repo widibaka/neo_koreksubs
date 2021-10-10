@@ -2,5 +2,6 @@
   "css.hover.references": false,
   "html.hover.references": false,
   "less.hover.references": false,
-  "scss.hover.references": false
+  "scss.hover.references": false,
+  "git.ignoreLimitWarning": true
 }
