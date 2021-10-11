@@ -80,7 +80,7 @@ class File extends CI_Controller {
 					$exploded_links = array_filter(explode('#pembatas1#',$item)); // convert to array
 					foreach ($exploded_links as $key => $link) {
 						$link = array_filter( explode('#pembatas2#',$link) );
-						$parsed_link .= '<a target="_blank" class="btn btn-sm btn-link mt-1 w-100" href="'.$link[1].'" >'.$link[0].'</a><br>';
+						$parsed_link .= '<a target="_blank" class="btn btn-sm btn-link mt-1 w-100" href="' . base_url() . 'pengaman?redirect=' . base64_encode($link[1]) . '" >'.$link[0].'</a><br>';
 					}
 					$parsed_link .= '</div>';
 					$row[] = $parsed_link;
