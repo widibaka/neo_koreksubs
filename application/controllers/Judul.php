@@ -16,7 +16,6 @@ class Judul extends CI_Controller {
     $data['data_anime'] = json_decode(file_get_contents( base_url() . 'Kitsu_api/id/' . $anime_id ), true);
 
 		$data['thead'] = $this->File_model->get_column();
-		array_pop($data['thead']);
 		
 		$data['url_data_tables'] = 'file/get_data?anime_id='.$anime_id;
 		$this->load->view('templates/header', $data);

@@ -23,19 +23,15 @@ class AuthModel extends CI_Model {
 	public function get_user_aktif()
 	{
 		$this->db->order_by('waktu_daftar', 'DESC');
-		$this->db->where('diblokir', 0);
-		$this->db->not_like('email', '@admin'); // <-- cari yang bukan admin
-		$this->db->select('id_user, email, username, password, hp, photo, bukti_mahasiswa, waktu_daftar, terakhir_online');
+		$this->db->where('diblokir', "0");
 		$data_new = $this->db->get( $this->table )->result_array();
-		// unset( $data_new['password'] );
 		return $data_new;
 	}
 
 	public function jumlah_user_aktif()
 	{
 		$this->db->order_by('waktu_daftar', 'DESC');
-		$this->db->where('diblokir', 0);
-		$this->db->not_like('email', '@admin'); // <-- cari yang bukan admin
+		$this->db->where('diblokir', "0");
 		$this->db->select('id_user');
 		$data_new = $this->db->get( $this->table )->num_rows();
 		// unset( $data_new['password'] );
@@ -58,7 +54,6 @@ class AuthModel extends CI_Model {
 		$this->db->where('id_user', $id_user);
 		$this->db->limit(1);
 		$data_new = $this->db->get( $this->table )->row_array();
-		unset( $data_new['password'] );
 		return $data_new;
 	}
 	public function register($data='')

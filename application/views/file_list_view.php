@@ -20,13 +20,7 @@
           <div class="alert alert-<?php echo $xpl[0] ?>"><?php echo $xpl[1] ?></div>
         <?php endif ?>
 
-        <div class="shadow bd-placeholder-img bd-placeholder-img-lg img-fluid" role="img"  focusable="false" 
-        style="
-        
-          width: 100%; height: 250px;
-          background-image: url(<?php echo base_url() . 'assets/banner.jpg' ?>)
-        
-        "></div>
+        <img class="shadow bd-placeholder-img bd-placeholder-img-lg img-fluid" role="img" src="<?php echo base_url() . 'assets/banner.jpg' ?>">
         <!-- /////////////// -->
         <?php $this->load->view('templates/file.php') ?>
         <!-- /////////////// -->

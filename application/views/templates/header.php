@@ -17,6 +17,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="<?php echo base_url() ?>assets/emblem_256.png" sizes="180x180">
+<link rel="icon" href="<?php echo base_url() ?>assets/emblem_256.png" sizes="32x32" type="image/png">
+<link rel="icon" href="<?php echo base_url() ?>assets/emblem_256.png">
+
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -54,9 +60,11 @@
     
 <header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
-    <h1 class="d-flex align-items-center fs-4 text-white mb-0">
-      Neo KorekSubs <span class="d-none d-sm-block"> - Anime Takarir Indonesia</span>
-    </h1>
+    <a class="text-white" href="<?php echo base_url() ?>">
+      <h1 class="d-flex align-items-center fs-4 mb-0">
+        Neo KorekSubs <span class="d-none d-sm-block"> - Anime Takarir Indonesia</span>
+      </h1>
+    </a>
     
 
     <?php if ( !empty($this->session->userdata('email')) ): ?>
@@ -81,7 +89,7 @@
     <ul class="list-unstyled">
       <?php if (!empty( $this->session->userdata('id_user')) ): ?>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#member-collapse" aria-controls="member-collapse" style="font-size:1.5rem;">Member</button>
+        <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#member-collapse" aria-controls="member-collapse" style="font-size:1.5rem;">Kelola Akun</button>
         <ul class="list-unstyled ps-3 collapse" id="member-collapse">
           <li><a class="d-inline-flex align-items-center rounded" href="<?php echo base_url() . 'tambah_file' ?>">Tambah Anime</a></li>
           <li><a class="d-inline-flex align-items-center rounded" href="<?php echo base_url() . 'auth/logout' ?>">Logout</a></li>
@@ -99,7 +107,11 @@
         <ul class="list-unstyled ps-3 collapse" id="tools-collapse">
           <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://www.livechart.me/fall-2021/tv">LiveChart</a></li>
           <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://taiga.moe/">Taiga Anime Tracking</a></li>
+          <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://www.youtube.com/channel/UCxxnxya_32jcKj4yN1_kD7A">Muse Indonesia</a></li>
         </ul>
+      </li>
+      <li class="my-2" style="margin-left: -5px;">
+        <a href="<?php echo base_url() . 'member/' ?>"class="btn d-inline-flex align-items-center"  style="font-size:1.5rem;">Semua Member</a>
       </li>
     </ul>
   </nav>

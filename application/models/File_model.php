@@ -62,6 +62,12 @@ class File_model extends CI_Model {
 		$this->db->limit(1);
 		return $this->db->get( $this->table )->row_array();
 	}
+
+	public function get_num_rows_by_id_user($id_user)
+	{
+		$this->db->where( 'id_user', $id_user );
+		return $this->db->get( $this->table )->num_rows();
+	}
 	// /////////////////////////////////////////////////////////////////////////
 
 	
@@ -170,6 +176,9 @@ class File_model extends CI_Model {
 			}
 			if ( !empty($this->input->get('episode')) ) {
 				$this->db->where('episode', $this->input->get('episode'));
+			}
+			if ( !empty($this->input->get('id_user')) ) {
+				$this->db->where('id_user', $this->input->get('id_user'));
 			}
 	}
 

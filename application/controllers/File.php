@@ -10,7 +10,6 @@ class File extends CI_Controller {
 
 	function index(){
 		$data['thead'] = $this->File_model->get_column();
-		array_pop($data['thead']);
 
 		$data['url_data_tables'] = 'file/get_data/';
 		$this->load->view('templates/header', $data);
@@ -41,7 +40,7 @@ class File extends CI_Controller {
 				$tombol_edit_hapus = '<a class="btn btn-sm btn-primary rounded-0 ml-2" href="'. base_url('tambah_file/edit/' . $val['anime_id'] . '/' . $item) .'" >Edit</a>' . '<a class="btn btn-sm btn-danger  rounded-0 ml-2" href="'. base_url('tambah_file/hapus/' . $item) .'" onclick="return confirm(\'Anda Yakin ingin menghapus?\')">Hapus</a>';
 
 				if ( $key=='id_user' ) { //<-- pengecualian
-					
+					$row[] = '<a href="' . base_url('member/file_by_user?id_user=') . $item . '">' . $this->AuthModel->get_user($item)['name'] . '</a>';
 				}
 
 				if ( $key=='id_file' ) {

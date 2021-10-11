@@ -62,7 +62,7 @@
                   Tipe: <?php echo $data_anime['data']['attributes']['subtype'] ?>
                 </p>
                 <p>
-                  Jumlah Episode: <?php echo $data_anime['data']['attributes']['episodeCount'] ?>
+                  Jumlah Episode: <?php echo (empty($data_anime['data']['attributes']['episodeCount'])) ? '<strong class="text-danger">Belum diketahui</strong>' : $data_anime['data']['attributes']['episodeCount'] ?>
                 </p>
                 <p>
                   Buka detail anime: <a target="_blank" href="<?php echo 'https://kitsu.io/anime/' . $data_anime['data']['id'] ?>">kitsu.io</a>
@@ -109,13 +109,27 @@
               <label for="nama_file" class="form-label">Episode</label>
               <select class="form-control" name="episode" required>
                 <?php $jum_episode = $data_anime['data']['attributes']['episodeCount']; ?>
-                <?php for ($i=1; $i <= (int)$jum_episode; $i++) : ?> 
-                  <option value="<?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT);  ?>" <?php echo ($data_file['episode']==$i) ? 'selected' : '' ?>><?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT); ?></option>
-                <?php endfor; ?>
+
+                <?php if ( empty( (int)$jum_episode ) ): ?>
+                  <?php for ($i=1; $i <= 26; $i++) : ?> 
+                    <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT);  ?>" ><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?></option>
+                  <?php endfor; ?>
+                <?php else: ?>
+                  <?php for ($i=1; $i <= (int)$jum_episode; $i++) : ?> 
+                    <option value="<?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT);  ?>" ><?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT); ?></option>
+                  <?php endfor; ?>
+                <?php endif ?>
+
+                
+
                 <option value="Batch">Batch</option>
                 
               </select>
-              <div id="nama_fileHelp" class="form-text">Pilih Batch jika file-nya lebih dari satu.</div>
+              <div id="nama_fileHelp" class="form-text">Pilih Batch jika file-nya lebih dari satu.
+                <?php if ( empty( (int)$jum_episode ) ): ?>
+                  <font class="text-danger">Jumlah episode dari anime ini belum diketahui.</font>
+                <?php endif ?>
+              </div>
             </div>
 
             <div class="mb-3">

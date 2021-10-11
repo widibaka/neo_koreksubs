@@ -21,12 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+<link rel="apple-touch-icon" href="<?php echo base_url() ?>assets/emblem_256.png" sizes="180x180">
+<link rel="icon" href="<?php echo base_url() ?>assets/emblem_256.png" sizes="32x32" type="image/png">
+<link rel="icon" href="<?php echo base_url() ?>assets/emblem_256.png">
 <meta name="theme-color" content="#7952b3">
 
 
@@ -93,7 +90,10 @@
     
 <main class="form-signin">
   <form>
-    <h1 class="h3 mb-3 fw-normal">KorekSubs - Anime Subtitle Indonesia</h1>
+
+    <img src="<?php echo base_url() ?>assets/emblem_256.png" alt="" style="width: 190px"> 
+
+    <h1 class="h3 my-3 fw-normal">KorekSubs - Anime Subtitle Indonesia</h1>
 
     <?php if ( !empty($this->session->flashdata('msg')) ): ?>
     <div class="alert alert-danger">
@@ -102,7 +102,7 @@
     
     <?php endif ?>
 
-    <a href="<?php echo $auth_url ?>" class="btn btn-light shadow w-100 mb-4 do_transition">
+    <a href="<?php echo $auth_url ?>" class="btn btn-light shadow w-100 my-4 do_transition">
       <img class="mr-1" src="<?php echo base_url() . 'assets/google_api/google.png' ?>" style="width: 22px; height: 22px;"> Login memakai Google
     </a>
 
