@@ -37,7 +37,15 @@
                 <img class="rounded shadow img-responsive w-100" src="<?php echo $data_anime['data']['attributes']['posterImage']['large'] ?>" alt="Poster">
             </div>
             <div class="px-4 col-sm-12 col-md-8">
-                <?php echo $data_anime['data']['attributes']['synopsis'] ?>
+                <?php 
+                
+                  $text = $data_anime['data']['attributes']['synopsis'];
+                  // $terjemahan = $this->GoogleApi->terjemah('en','id',$text);
+                  // echo $terjemahan;
+
+                  echo $text;
+                
+                ?>
                 <br>
                 <hr>
                 <p>
@@ -61,7 +69,7 @@
                   <strong>Rating Guide:</strong> <?php echo $data_anime['data']['attributes']['ageRatingGuide'] ?>
                 </p>
                 <p>
-                  <strong>Status:</strong> <?php echo $data_anime['data']['attributes']['status'] ?>
+                  <strong>Status:</strong> <?php echo ($data_anime['data']['attributes']['status']=='current') ? 'ON GOING' : strtoupper($data_anime['data']['attributes']['status']) ?>
                 </p>
                 <p>
                   <strong>Tipe:</strong> <?php echo $data_anime['data']['attributes']['subtype'] ?>

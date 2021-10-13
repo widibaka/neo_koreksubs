@@ -10,6 +10,21 @@ class File extends CI_Controller {
 
 	function index(){
 		$data['thead'] = $this->File_model->get_column();
+		array_pop($data['thead']);
+
+		$anime_ids = $this->File_model->get_koleksi(8);
+		$data['anime_terbaru']=[];
+		// ambil data dari kitsu api
+    foreach ($anime_ids as $key => $anime_id) {
+      $data_raw = json_decode(file_get_contents( base_url() . 'Kitsu_api/id/' . $anime_id ), true);
+
+      $append = [];
+      $append['id'] = $data_raw['data']['id'];
+      $append['poster'] = $data_raw['data']['attributes']['posterImage']['tiny'];
+      $append['titles'] = $data_raw['data']['attributes']['titles']['en_jp'] .' - ['. $data_raw['data']['attributes']['titles']['ja_jp'] . ']';
+
+      $data['anime_terbaru'][] = $append;
+    }
 
 		$data['url_data_tables'] = 'file/get_data/';
 		$this->load->view('templates/header', $data);
@@ -37,19 +52,28 @@ class File extends CI_Controller {
 			// $row[] = $no;
 			foreach ($val as $key => $item) {
 
-				$tombol_edit_hapus = '<a class="btn btn-sm btn-primary rounded-0 ml-2" href="'. base_url('tambah_file/edit/' . $val['anime_id'] . '/' . $item) .'" >Edit</a>' . '<a class="btn btn-sm btn-danger  rounded-0 ml-2" href="'. base_url('tambah_file/hapus/' . $item) .'" onclick="return confirm(\'Anda Yakin ingin menghapus?\')">Hapus</a>';
+				$tombol_edit_hapus = '<a class="btn btn-sm btn-primary me-1" href="'. base_url('tambah_file/edit/' . $val['anime_id'] . '/' . $item . '/' . $val['id_user']) .'" >Edit</a>' . '<a class="btn btn-sm btn-danger  me-1" href="'. base_url('tambah_file/hapus/' . $item . '/' . $val['id_user']) .'" onclick="return confirm(\'Anda Yakin ingin menghapus?\')">Hapus</a>';
 
 				if ( $key=='id_user' ) { //<-- pengecualian
 					$row[] = '<a href="' . base_url('member/file_by_user?id_user=') . $item . '">' . $this->AuthModel->get_user($item)['name'] . '</a>';
 				}
 
-				if ( $key=='id_file' ) {
+				elseif ( $key=='id_file' ) {
+					$row[] = '<span class="hide_parent_of_this">' . $item . '</span>';
+				}
+
+				elseif ( $key=='publish' ) {
+					// do nothing
+				}
+
+				elseif ( $key=='nama_file' ) {
 					if ( $val['id_user'] == $this->session->userdata('id_user') ) {
-						$row[] = $item . $tombol_edit_hapus;
+						$row[] = $tombol_edit_hapus . $item;
 					}
 					else{
 						$row[] = $item;
 					}
+					
 				}
 
 				elseif ( $key=='anime_id' ) {
@@ -68,7 +92,7 @@ class File extends CI_Controller {
 					$tanggal = explode(' ',$item)[0];
 					$tanggal_sekarang = date('Y-m-d');
 					if ($tanggal==$tanggal_sekarang) {
-						$row[] = 'Hari ini';
+						$row[] = '<p class="alert alert-success p-0 px-1">'.$item.'</p>';
 					} else {
 						$row[] = $item;
 					}
@@ -80,7 +104,7 @@ class File extends CI_Controller {
 					$exploded_links = array_filter(explode('#pembatas1#',$item)); // convert to array
 					foreach ($exploded_links as $key => $link) {
 						$link = array_filter( explode('#pembatas2#',$link) );
-						$parsed_link .= '<a target="_blank" class="btn btn-sm btn-link mt-1 w-100" href="' . base_url() . 'pengaman?redirect=' . base64_encode($link[1]) . '" >'.$link[0].'</a><br>';
+						$parsed_link .= '<a target="_blank" class="btn btn-sm btn-link mt-1 w-100" href="' . base_url() . 'pengaman/download/'.$val['id_file'].'?redirect=' . base64_encode($link[1]) . '" >'.$link[0].'</a><br>';
 					}
 					$parsed_link .= '</div>';
 					$row[] = $parsed_link;

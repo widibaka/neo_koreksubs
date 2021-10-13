@@ -18,7 +18,6 @@ class Koleksi extends CI_Controller {
     foreach ($anime_ids as $key => $anime_id) {
       $data_raw = json_decode(file_get_contents( base_url() . 'Kitsu_api/id/' . $anime_id ), true);
 
-
       $append = [];
       $append['id'] = $data_raw['data']['id'];
       $append['poster'] = $data_raw['data']['attributes']['posterImage']['tiny'];

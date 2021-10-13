@@ -104,7 +104,7 @@ class AuthModel extends CI_Model {
 	public function blokir_akun($id_user)
 	{
 		$data = [
-			'diblokir' => 1,
+			'diblokir' => '1',
 		];
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->table, $data);
@@ -112,7 +112,7 @@ class AuthModel extends CI_Model {
 	public function buka_blokir_akun($id_user)
 	{
 		$data = [
-			'diblokir' => 0,
+			'diblokir' => '0',
 		];
 		$this->db->where('id_user', $id_user);
 		return $this->db->update($this->table, $data);

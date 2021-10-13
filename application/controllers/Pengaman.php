@@ -7,8 +7,9 @@ class Pengaman extends CI_Controller {
 		parent::__construct();
 	}
 
-	function index(){
+	function download($id_file){
 
+		$this->File_model->tambah_click_count($id_file);
     $data['link'] = base64_decode($this->input->get('redirect'));
 
 		$this->load->view('templates/header', $data);

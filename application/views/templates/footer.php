@@ -11,12 +11,16 @@
             <span class="text-muted">KorekSubs 2021</span>
           </div>
         </footer>
+        
+        
       </div>
-
+      
     </article>
 </div>
 
+<script id="dsq-count-scr" src="//koreksubs-1.disqus.com/count.js" async></script>
 
+</body>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -65,6 +69,8 @@
   $("form").submit(function(event) {
     show_loader( $(this).find('button[type="submit"]') );
   });
+
+  
 </script>
 
 

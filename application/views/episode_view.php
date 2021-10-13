@@ -35,7 +35,7 @@
                 }
          ?></h3>
          <div class="row">
-            <div class="col-6 text-right">
+            <div class="col-6 text-end">
               <h3 class=" text-right">Episode <?php echo $this->input->get('episode') ?></h3>
               <div class="p-1">
                 <p>

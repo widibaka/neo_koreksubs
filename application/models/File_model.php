@@ -17,12 +17,46 @@ class File_model extends CI_Model {
 		$this->load->database();
 	}
 
+	////////////////////////////////////////////////////////////////////////////
+
+	public function tambah_click_count($id_file)
+	{
+		$query = $this->db->query('UPDATE '.$this->table.' SET click_count = click_count + 1 WHERE id_file = "'. $id_file . '"');
+	}
+
+	public function get_click_count_of_user($id_user)
+	{
+		$this->db->select_sum('click_count');
+		$this->db->where('id_user', $id_user);
+		$result = $this->db->get($this->table)->row_array()['click_count'];
+		return $result;
+	}
+
+	public function blokir_file_by_user($id_user)
+	{
+		$data = [
+			'publish' => 'N',
+		];
+		$this->db->where('id_user', $id_user);
+		return $this->db->update($this->table, $data);
+	}
+
+	public function buka_blokir_file($id_user)
+	{
+		$data = [
+			'publish' => 'Y',
+		];
+		$this->db->where('id_user', $id_user);
+		return $this->db->update($this->table, $data);
+	}
+
 	// /////////////////////////////////////////////////////////////////////////
 
-	public function get_koleksi()
+	public function get_koleksi($limit=null)
 	{
 		$this->db->select( 'anime_id' );
 		$this->db->order_by( 'waktu', 'DESC' );
+		$this->db->limit( $limit );
 		$data = $this->db->get( $this->table )->result_array();
 		$data2 = [];
 		foreach ($data as $key => $value) {
@@ -180,6 +214,9 @@ class File_model extends CI_Model {
 			if ( !empty($this->input->get('id_user')) ) {
 				$this->db->where('id_user', $this->input->get('id_user'));
 			}
+
+			// pilih yang tidak diblokir
+			$this->db->where('publish', 'Y');
 	}
 
 	function get_datatables()

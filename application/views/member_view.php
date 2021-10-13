@@ -28,10 +28,17 @@
           <a href="<?php echo base_url('member/file_by_user?id_user=') . $member['id_user']; ?>"><?php echo $member['name'] ?></a>
         </p>
          <div class="row">
-            <div class="col-6 text-right">
-              <h3 class=" text-right">File milik <?php echo $member['name'] ?></h3>
+            <div class="col-sm-12 col-md-6">
+              <h3 class=""><?php echo $member['name'] ?></h3>
               <div class="p-1">
                 <p>
+                  Di sini adalah semua file yang dipos oleh <?php echo $member['name'] ?>.
+                  <br>
+                  <br>
+                  Semua orang bisa posting anime di sini dengan cara login lewat google di pojok kanan atas situ lho.
+                </p>
+                <p>
+                  <strong>Total klik: </strong> <?php echo $total_click ?>
                 </p>
               </div>
             </div>

@@ -47,14 +47,14 @@ class Tambah_file extends CI_Controller {
 		$this->load->view('tambah_file_JS', $data);
 	}
 
-	function edit($anime_id, $id_file){
+	function edit($anime_id, $id_file, $id_user){
 
 		if ( !empty( $this->input->post()) ) {
 			$post = $this->input->post();
 
 			$this->File_model->update($post, $id_file);
 			$this->session->set_flashdata('msg', 'success#File berhasil diubah.');
-			redirect( base_url() );
+			redirect( base_url() . 'member/file_by_user?id_user=' . $id_user  );
 		}
 
     $data['data_anime'] = json_decode(file_get_contents( base_url() . 'Kitsu_api/id/' . $anime_id ), true);
@@ -66,12 +66,12 @@ class Tambah_file extends CI_Controller {
 		$this->load->view('edit_file_JS', $data);
 	}
 
-	function hapus($id_file){
+	function hapus($id_file, $id_user){
 
 		$post = $this->input->post();
 		$this->File_model->hapus($id_file);
 		$this->session->set_flashdata('msg', 'success#File berhasil dihapus.');
-		redirect( base_url() );
+		redirect( base_url() . 'member/file_by_user?id_user=' . $id_user );
 	}
 
 

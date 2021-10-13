@@ -79,6 +79,12 @@ class Auth extends CI_Controller {
 	    //**
 		if ( !empty($pay_load) ) {
 			$check_result = $this->AuthModel->check_user( $pay_load );
+
+			if ( $check_result['diblokir'] == '1' ) {
+				$this->session->set_flashdata('msg', 'error#Akun ini telah diblokir!');
+				redirect(base_url() . 'auth/login' );
+			}
+
 			if ($check_result) {
 				$this->session->set_userdata($check_result);
 				redirect(base_url() );
