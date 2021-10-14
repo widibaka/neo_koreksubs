@@ -20,7 +20,7 @@ class File extends CI_Controller {
 
       $append = [];
       $append['id'] = $data_raw['data']['id'];
-      $append['poster'] = $data_raw['data']['attributes']['posterImage']['tiny'];
+      $append['poster'] = $data_raw['data']['attributes']['posterImage']['small'];
       $append['titles'] = $data_raw['data']['attributes']['titles']['en_jp'] .' - ['. $data_raw['data']['attributes']['titles']['ja_jp'] . ']';
 
       $data['anime_terbaru'][] = $append;
@@ -52,7 +52,7 @@ class File extends CI_Controller {
 			// $row[] = $no;
 			foreach ($val as $key => $item) {
 
-				$tombol_edit_hapus = '<a class="btn btn-sm btn-primary me-1" href="'. base_url('tambah_file/edit/' . $val['anime_id'] . '/' . $item . '/' . $val['id_user']) .'" >Edit</a>' . '<a class="btn btn-sm btn-danger  me-1" href="'. base_url('tambah_file/hapus/' . $item . '/' . $val['id_user']) .'" onclick="return confirm(\'Anda Yakin ingin menghapus?\')">Hapus</a>';
+				
 
 				if ( $key=='id_user' ) { //<-- pengecualian
 					$row[] = '<a href="' . base_url('member/file_by_user?id_user=') . $item . '">' . $this->AuthModel->get_user($item)['name'] . '</a>';
@@ -67,6 +67,8 @@ class File extends CI_Controller {
 				}
 
 				elseif ( $key=='nama_file' ) {
+					$tombol_edit_hapus = '<a class="btn btn-sm btn-primary me-1" href="'. base_url('tambah_file/edit/' . $val['anime_id'] . '/' . $val['id_file'] . '/' . $val['id_user']) .'" >Edit</a>' . '<a class="btn btn-sm btn-danger  me-1" href="'. base_url('tambah_file/hapus/' . $val['id_file'] . '/' . $val['id_user']) .'" onclick="return confirm(\'Anda Yakin ingin menghapus?\')">Hapus</a>';
+
 					if ( $val['id_user'] == $this->session->userdata('id_user') ) {
 						$row[] = $tombol_edit_hapus . $item;
 					}

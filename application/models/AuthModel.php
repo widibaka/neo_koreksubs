@@ -11,13 +11,16 @@ class AuthModel extends CI_Model {
 
 		if ( $result == null ) {
 			$reg = [ 
+				'id_user' => uniqid(),
 				'email' => $data['email'],
 				'name' => $data['name'],
 			];
 			$this->register($reg);
 			return $reg;
+		}else{
+			return $result;
 		}
-		return $result;
+		
 	}
 
 	public function get_user_aktif()

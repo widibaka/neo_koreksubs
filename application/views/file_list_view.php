@@ -30,7 +30,7 @@
           <div class="col-12 text-center">
           <?php foreach ($anime_terbaru as $key => $ani): ?>
             <a class="me-2" href="<?php echo base_url() . 'judul/?anime_id=' . $ani['id'] ?>" title="<?php echo $ani['titles'] ?>">
-              <img class="shadow mb-4" src="<?php echo $ani['poster'] ?>" alt="">
+              <img style="max-height: 250px;" class="shadow mb-4" src="<?php echo $ani['poster'] ?>" alt="">
             </a>
           <?php endforeach ?>
           </div>

@@ -75,6 +75,9 @@
           <div class="bd-example container">
           <?php echo form_open() ?>
             <div class="mb-3">
+              <label for="nama_file" class="form-label">ID File: <?php echo $data_file['id_file'] ?></label>
+            </div>
+            <div class="mb-3">
               <label for="nama_file" class="form-label">Nama File</label>
               <input type="text" class="form-control" name="nama_file" placeholder="[PendekarSubs] 86 - Eighty-Six - 04 [720p].mkv ..." value="<?php echo $data_file['nama_file'] ?>">
               <div id="nama_fileHelp" class="form-text">Nama file yang anda masukkan. Jangan lupa tambahkan [Batch] jika file Anda adalah rentengan.</div>
@@ -135,6 +138,11 @@
             <div class="mb-3">
               <label for="nama_file" class="form-label">Website</label>
               <input type="text" class="form-control" name="website" placeholder="" required value="<?php echo $data_file['website'] ?>">
+            </div>
+
+            <div class="mb-3">
+              <label for="size" class="form-label">Size</label>
+              <input type="text" class="form-control" name="size" placeholder="" required value="<?php echo $data_file['size'] ?>">
             </div>
 
 

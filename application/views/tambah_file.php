@@ -134,6 +134,11 @@
               <input type="text" class="form-control" name="website" placeholder="" required value="#">
             </div>
 
+            <div class="mb-3">
+              <label for="size" class="form-label">Size</label>
+              <input type="text" class="form-control" name="size" placeholder="" required value="0 MB">
+            </div>
+
             <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user'); ?>" required />
 
             <button type="submit" class="btn btn-primary">Submit</button>
