@@ -115,11 +115,11 @@
 
                 <?php if ( empty( (int)$jum_episode ) ): ?>
                   <?php for ($i=1; $i <= 26; $i++) : ?> 
-                    <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT);  ?>" ><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?></option>
+                    <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT);  ?>" <?php echo ($data_file['episode'] == str_pad($i, 2, '0', STR_PAD_LEFT)) ? 'selected' : '' ?>><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?></option>
                   <?php endfor; ?>
                 <?php else: ?>
                   <?php for ($i=1; $i <= (int)$jum_episode; $i++) : ?> 
-                    <option value="<?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT);  ?>" ><?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT); ?></option>
+                    <option value="<?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT);  ?>"  <?php echo ($data_file['episode'] == str_pad($i, 2, '0', STR_PAD_LEFT)) ? 'selected' : '' ?>><?php echo str_pad($i, strlen($jum_episode), '0', STR_PAD_LEFT); ?></option>
                   <?php endfor; ?>
                 <?php endif ?>
 

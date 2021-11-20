@@ -32,7 +32,16 @@
                 <img class="rounded shadow img-responsive w-100" src="<?php echo $data_anime['data']['attributes']['posterImage']['large'] ?>" alt="Poster">
             </div>
             <div class="px-5 col-sm-12 col-md-8">
-                <?php echo $data_anime['data']['attributes']['synopsis'] ?>
+                <?php 
+                  $text = $data_anime['data']['attributes']['synopsis'];
+                  $terjemah = $this->SinopsisModel->get_sinopsis( $data_anime['data']['id'] );
+
+                  if ( $terjemah ) {
+                    echo $terjemah;
+                  } else {
+                    echo $text;
+                  }
+                ?>
                 <br>
                 <br>
                 <p>

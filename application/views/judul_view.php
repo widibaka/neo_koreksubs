@@ -43,7 +43,16 @@
                   // $terjemahan = $this->GoogleApi->terjemah('en','id',$text);
                   // echo $terjemahan;
 
-                  echo $text;
+                  $terjemah = $this->SinopsisModel->get_sinopsis( $data_anime['data']['id'] );
+
+                  if ( $terjemah ) {
+                    echo $terjemah;
+                  } else {
+                    echo $text;
+                  }
+                  
+
+                  
                 
                 ?>
                 <br>
