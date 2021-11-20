@@ -17,6 +17,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- BS icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="<?php echo base_url() ?>assets/emblem_256.png" sizes="180x180">
 <link rel="icon" href="<?php echo base_url() ?>assets/emblem_256.png" sizes="32x32" type="image/png">

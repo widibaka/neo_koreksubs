@@ -1,6 +1,9 @@
 <?php
 
-date_default_timezone_set("Asia/Bangkok");
+
+date_default_timezone_set("Asia/Bangkok"); // .widibaka
+
+include 'https_force.php';
 /**
  * CodeIgniter
  *
@@ -55,7 +58,7 @@ date_default_timezone_set("Asia/Bangkok");
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
 
 /*
  *---------------------------------------------------------------

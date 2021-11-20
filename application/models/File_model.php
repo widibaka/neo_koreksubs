@@ -83,6 +83,14 @@ class File_model extends CI_Model {
 		$this->db->update( $this->table, $data );
 	}
 
+	public function get_a_file($id_file)
+	{
+		$this->db->where( 'id_file', $id_file );
+		$this->db->limit(1);
+
+		return $this->db->get( $this->table )->row_array();
+	}
+
 	public function hapus($id_file)
 	{
 		$this->db->where( 'id_file', $id_file );
