@@ -74,6 +74,13 @@
         <div>
           <div class="bd-example container">
           <?php echo form_open() ?>
+            <input type="hidden" name="title" value="<?php 
+                foreach ($data_anime['data']['attributes']['titles'] as $key => $judul) {
+                  if ( $key != 'ja_jp' ) {
+                    echo '(' . $judul . ') ';
+                  }
+                }
+            ?>">
             <div class="mb-3">
               <label for="nama_file" class="form-label">ID File: <?php echo $data_file['id_file'] ?></label>
             </div>

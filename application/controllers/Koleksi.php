@@ -49,7 +49,12 @@ class Koleksi extends CI_Controller {
       // $append['titles'] = $data_raw['data']['attributes']['titles']['en_jp'] .' - ['. $data_raw['data']['attributes']['titles']['ja_jp'] . ']';
       // $append['showType'] = $data_raw['data']['attributes']['showType'];
       // $append['kitsu'] = $data_raw['data']['links']['self'];
-      $title = $data_raw['data']['attributes']['titles']['en_jp'] .' - ['. $data_raw['data']['attributes']['titles']['ja_jp'] . ']';
+      $title = '';
+      foreach ($data_raw['data']['attributes']['titles'] as $key => $judul) {
+        if ( $key != 'ja_jp' ) {
+            $title .= '(' . $judul . ') ';
+        }
+      }
       $data = [
         'title' => $title
       ];

@@ -83,6 +83,13 @@
         <div>
           <div class="bd-example container">
           <?php echo form_open() ?>
+            <input type="hidden" name="title" value="<?php 
+                foreach ($data_anime['data']['attributes']['titles'] as $key => $judul) {
+                  if ( $key != 'ja_jp' ) {
+                    echo '(' . $judul . ') ';
+                  }
+                }
+            ?>">
             <div class="mb-3">
               <label for="nama_file" class="form-label">Nama File</label>
               <input type="text" class="form-control" name="nama_file" placeholder="[PendekarSubs] 86 - Eighty-Six - 04 [720p].mkv ...">

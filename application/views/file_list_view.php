@@ -27,11 +27,18 @@
             
         <div class="m-0 p-0">
           <h3 class="m-0 p-0 mb-3">Koleksi Terbaru</h3>
-          <div class="col-12 text-center">
+          <div class="col-12 text-center d-flex justify-content-center" style="flex-wrap: wrap;">
           <?php foreach ($anime_terbaru as $key => $ani): ?>
-            <a class="me-2" href="<?php echo base_url() . 'judul/?anime_id=' . $ani['id'] ?>" title="<?php echo $ani['titles'] ?>">
-              <img style="max-height: 250px;" class="shadow mb-4" src="<?php echo $ani['poster'] ?>" alt="">
-            </a>
+            <div class="me-2 mb-4">
+              <a href="<?php echo base_url() . 'judul/?anime_id=' . $ani['id'] ?>" title="<?php echo $ani['titles'] ?>">
+                <img style="max-height: 250px;" class="shadow " src="<?php echo $ani['poster'] ?>" alt="">
+              </a>
+              
+              <?php if ( !empty($this->session->userdata('email')) ): ?>
+                <br>
+                <a href="<?php echo base_url() . 'tambah_file/proses/' . $ani['id'] ?>" >[+Episode]</a>
+              <?php endif ?>
+            </div>
           <?php endforeach ?>
           </div>
           
