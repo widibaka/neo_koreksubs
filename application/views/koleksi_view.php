@@ -38,17 +38,16 @@
                   </thead>
                       <?php foreach ($data_anime as $key => $content): ?>
                         <tr>
-                          <td>
+                          <!-- <td>
                             <a href="<?php echo base_url() . 'judul/?anime_id=' . $content['id']; ?>">
                               <img src="<?php echo $content['poster'] ?>" alt="">
                             </a>
-                          </td>
+                          </td> -->
                           <td>
                             <a href="<?php echo base_url() . 'judul/?anime_id=' . $content['id']; ?>">
                               <?php echo $content['titles'] ?>
                             </a>
                           </td>
-                          <td><?php echo $content['showType'] ?></td>
                           <td><a target="_blank" href="<?php echo 'https://kitsu.io/anime/'.$content['id'] ?>"><?php echo $content['id'] ?></a></td>
                         </tr>
                       <?php endforeach ?>
