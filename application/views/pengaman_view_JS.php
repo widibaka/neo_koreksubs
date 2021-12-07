@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 
-  // setInterval(function() {
+  // setTimeout(function() {
   //   let angka = parseInt($(".timer").html());
   //   if ( angka > 0 ) {
   //     $(".timer").html(angka-1);

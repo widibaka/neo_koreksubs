@@ -54,7 +54,7 @@ class File_model extends CI_Model {
 
 	public function get_koleksi($limit=null)
 	{
-		$this->db->select( 'anime_id' );
+		$this->db->distinct( 'anime_id' );
 		$this->db->order_by( 'waktu', 'DESC' );
 		$this->db->limit( $limit );
 		$data = $this->db->get( $this->table )->result_array();
@@ -62,7 +62,7 @@ class File_model extends CI_Model {
 		foreach ($data as $key => $value) {
 			$data2[] = $value['anime_id'];
 		}
-		return array_unique($data2);
+		return $data2;
 	}
 
 	public function add($data)
