@@ -74,5 +74,16 @@ class Tambah_file extends CI_Controller {
 		redirect( base_url() . 'member/file_by_user?id_user=' . $id_user );
 	}
 
+	public function submit_sinopsis()
+	{
+		$post = $this->input->post();
+		$anime_id = $post['anime_id'];
+		$data = $post;
+		$this->load->model('SinopsisModel');
+		$this->SinopsisModel->submit_sinopsis($anime_id, $data);
+
+		redirect( base_url() . 'tambah_file/proses/' . $anime_id );
+	}
+
 
 }

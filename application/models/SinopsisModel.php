@@ -19,5 +19,29 @@ class SinopsisModel extends CI_Model {
 		return $result;
 	}
 
+	public function submit_sinopsis($anime_id, $data)
+	{
+		if ( $this->get_sinopsis($anime_id) ) {
+			$this->update($anime_id, $data);
+		}
+		else {
+			$this->insert($data);
+		}
+	}
+
+	public function update($anime_id, $data)
+	{
+		$this->db->where('anime_id', $anime_id);
+		$this->db->limit(1);
+		$result = $this->db->update( $this->table, $data );
+		return $result;
+	}
+
+	public function insert($data)
+	{
+		$result = $this->db->insert( $this->table, $data );
+		return $result;
+	}
+
 
 }

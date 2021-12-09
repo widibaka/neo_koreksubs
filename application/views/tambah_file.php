@@ -36,12 +36,29 @@
                   $text = $data_anime['data']['attributes']['synopsis'];
                   $terjemah = $this->SinopsisModel->get_sinopsis( $data_anime['data']['id'] );
 
-                  if ( $terjemah ) {
-                    echo $terjemah;
-                  } else {
-                    echo $text;
-                  }
+                  // if ( $terjemah ) {
+                  //   echo $terjemah;
+                  // } else {
+                  //   echo $text;
+                  // }
+
+                  echo $text;
+                  
                 ?>
+                <br>
+                <br>
+                <hr>
+                <button class="btn btn-primary btn-sm" onclick="$('#form_terjemah').toggle(300)">Edit Terjemahan</button>
+                <div class="col-12 mt-4" id="form_terjemah" style="display: none;">
+                  Terjemah Indonesia: <br>
+                  <?php echo form_open( base_url("tambah_file/submit_sinopsis/") ) ?>
+                    <input type="hidden" name="anime_id" value="<?php echo $data_anime['data']['id'] ?>">
+                    <textarea class="form-control" name="sinopsis" id="" cols="30" rows="10"><?php echo $terjemah ?></textarea>
+                    <button class="btn btn-primary btn-sm mt-2" type="submit">Simpan</button>
+                  </form>
+                </div>
+                <hr>
+
                 <br>
                 <br>
                 <p>

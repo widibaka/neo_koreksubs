@@ -18,6 +18,7 @@ class Episode extends CI_Controller {
 
 		$data['thead'] = $this->File_model->get_column();
 		array_pop($data['thead']);
+		array_pop($data['thead']);
 		
 		$data['url_data_tables'] = 'file/get_data?anime_id='.$anime_id.'&episode='.$episode;
 		
