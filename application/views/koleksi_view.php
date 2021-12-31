@@ -48,6 +48,7 @@
                               <?php echo $content['titles'] ?>
                             </a>
                           </td>
+                          <td><?php echo $content['musim'] ?></td>
                           <td><a target="_blank" href="<?php echo 'https://kitsu.io/anime/'.$content['id'] ?>"><?php echo $content['id'] ?></a></td>
                         </tr>
                       <?php endforeach ?>

@@ -29,6 +29,7 @@ class Member extends CI_Controller {
 		$data['thead'] = $this->File_model->get_column();
 		array_pop($data['thead']);
 		array_pop($data['thead']);
+		array_pop($data['thead']);
 		$data['member'] = $this->AuthModel->get_user($id_user);
 		$data['total_click'] = $this->File_model->get_click_count_of_user($id_user);
 		

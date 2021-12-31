@@ -54,26 +54,53 @@ class File_model extends CI_Model {
 
 	public function get_koleksi($limit=null)
 	{
-		$this->db->select( 'anime_id, title' );
-		$this->db->distinct( 'anime_id' );
-		$this->db->order_by( 'waktu', 'DESC' );
-		$this->db->limit( $limit );
-		$data = $this->db->get( $this->table )->result_array();
+		$query = "SELECT DISTINCT `anime_id`, `waktu` 
+				FROM `$this->table`
+				ORDER BY `waktu` DESC
+				LIMIT 20";
+		$data = $this->db->query( $query )->result_array();
 		$data2 = [];
 		foreach ($data as $key => $value) {
 			$data2[] = $value['anime_id'];
 		}
-		return array_unique( $data2 );
+		// buat unik
+		$data2 = array_unique( $data2 );
+		// reindexing array
+		$data2 = array_values( $data2 );
+
+		$data3 = [];
+		for ($i=0; $i < ( count($data2) < $limit ? count($data2) : $limit ); $i++) { 
+			$data3[] = $data2[$i];
+		}
+		// echo '<pre>'; var_dump( $data3 ); die;
+
+		// echo '<pre>'; var_dump( $this->db->last_query() ); die;
+		return $data3;
 	}
 
-	public function get_koleksi2($limit=null)
+	public function get_koleksi2()
 	{
-		$this->db->select( 'anime_id, title' );
+		$this->db->select( 'anime_id, title, musim, waktu');
 		$this->db->distinct( 'anime_id' );
 		$this->db->order_by( 'waktu', 'DESC' );
-		$this->db->limit( $limit );
 		$data = $this->db->get( $this->table )->result_array();
-		return $data;
+		// echo '<pre>'; var_dump( $data ); die;
+
+		# Select distinct enggak ngedek sama sekali. Kecewa berat aku.
+
+		$data_pembantu = [];
+		$penyimpan_anime_id = [];
+		for ($i=0; $i < ( count($data) ); $i++) {
+			// periksa jangan sampai ada duplikat
+			if ( !in_array($data[$i]['anime_id'], $penyimpan_anime_id) ) {
+				// simpan data ke array baru
+				$data_pembantu[] = $data[$i];
+			}
+			// simpan anime id nya ke suatu array, nanti untuk memeriksa jangan sampai ada duplikat
+			$penyimpan_anime_id[] = $data[$i]['anime_id'];
+		}
+
+		return $data_pembantu;
 	}
 
 	public function add($data)

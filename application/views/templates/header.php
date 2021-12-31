@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Download Anime">
-    <meta name="author" content="Koresubs">
+    <meta name="author" content="Koreksubs">
     <title>Neo KorekSubs · Anime Takarir Indonesia</title>
 
 
@@ -103,12 +103,20 @@
         <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#koleksi-collapse" aria-controls="koleksi-collapse" style="font-size:1.5rem;">Koleksi</button>
         <ul class="list-unstyled ps-3 collapse" id="koleksi-collapse">
           <li><a class="d-inline-flex align-items-center rounded" href="<?php echo base_url() . 'koleksi' ?>">Koleksi Anime</a></li>
+          <li><a class="d-inline-flex align-items-center rounded" href="https://github.com/widibaka/Riwayat-Subtitle-Ass">Subtitles / Takarir saja</a></li>
+        </ul>
+      </li>
+      <li class="my-2">
+        <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#teman-collapse" aria-controls="tools-collapse" style="font-size:1.5rem;">Website Teman</button>
+        <ul class="list-unstyled ps-3 collapse" id="teman-collapse">
+          <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://pendekarsubs.us/">PendekarSubs</a></li>
+          <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://caramel.web.id/">CaramelSubs</a></li>
         </ul>
       </li>
       <li class="my-2">
         <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#tools-collapse" aria-controls="tools-collapse" style="font-size:1.5rem;">Tools Berfaedah</button>
         <ul class="list-unstyled ps-3 collapse" id="tools-collapse">
-          <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://www.livechart.me/fall-2021/tv">LiveChart</a></li>
+          <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://www.livechart.me/">LiveChart</a></li>
           <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://taiga.moe/">Taiga Anime Tracking</a></li>
           <li><a target="_blank" class="d-inline-flex align-items-center rounded" href="https://www.youtube.com/channel/UCxxnxya_32jcKj4yN1_kD7A">Muse Indonesia</a></li>
         </ul>

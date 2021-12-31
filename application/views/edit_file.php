@@ -81,6 +81,30 @@
                   }
                 }
             ?>">
+            <input type="hidden" name="musim" value="<?php 
+                function convertDateToSeason($angkaBulan, $angkaTanggal)
+                {
+                  // buat menjadi integer
+                  (int)$angkaBulan;
+                  (int)$angkaTanggal;
+
+                  if ( ($angkaBulan == 12 OR 1 <= $angkaBulan AND $angkaBulan <= 2) AND $angkaTanggal >= 1 ) { // Winter dimulai 1 December sampai akhir februari
+                    return 'Kuartal 1 (Winter)';
+                  }
+                  if ( (3 <= $angkaBulan AND $angkaBulan <= 5) AND $angkaTanggal >= 1 ) {
+                    return 'Kuartal 2 (Spring)';
+                  }
+                  if ( (6 <= $angkaBulan AND $angkaBulan <= 8) AND $angkaTanggal >= 1 ) {
+                    return 'Kuartal 3 (Summer)';
+                  }
+                  if ( (9 <= $angkaBulan AND $angkaBulan <= 11) AND $angkaTanggal >= 1 ) {
+                    return 'Kuartal 4 (Fall)';
+                  }
+                }
+                $startDate = explode('-', $data_anime['data']['attributes']['startDate']);
+
+                echo $startDate[0] . ' ' . convertDateToSeason($startDate[1], $startDate[2]);
+            ?>">  
             <div class="mb-3">
               <label for="nama_file" class="form-label">ID File: <?php echo $data_file['id_file'] ?></label>
             </div>

@@ -22,13 +22,15 @@ class Koleksi extends CI_Controller {
       $append['id'] = $val['anime_id'];
       // $append['poster'] = $data_raw['data']['attributes']['posterImage']['tiny'];
       $append['titles'] = $val['title'];
+
+      $append['musim'] = $val['musim'];
       // $append['showType'] = $data_raw['data']['attributes']['showType'];
       $append['kitsu'] = 'https://kitsu.io/anime/' . $val['anime_id'];
 
       $data['data_anime'][] = $append;
     }
 
-		$data['thead'] = ['judul', 'Kitsu'];
+		$data['thead'] = ['judul', 'Musim', 'Kitsu.io'];
 		$this->load->view('templates/header', $data);
 		$this->load->view('koleksi_view', $data);
 		$this->load->view('templates/footer', $data);
@@ -63,8 +65,61 @@ class Koleksi extends CI_Controller {
     }
     
     echo '<pre>'; var_dump( 'SELESAI. JUMLAH ANIME ' . $count ); die;
+  }
 
-		
+  public function setMusim()
+  {
+    $count = 0;
+    $anime_ids = $this->File_model->get_koleksi(10000);
+
+
+    // untuk mengubah tanggal menjadi musim
+    function convertDateToSeason($angkaBulan, $angkaTanggal)
+    {
+      // buat menjadi integer
+      (int)$angkaBulan;
+      (int)$angkaTanggal;
+
+      if ( ($angkaBulan == 12 OR 1 <= $angkaBulan AND $angkaBulan <= 2) AND $angkaTanggal >= 1 ) { // Winter dimulai 1 December sampai akhir februari
+        return 'Kuartal 1 (Winter)';
+      }
+      if ( (3 <= $angkaBulan AND $angkaBulan <= 5) AND $angkaTanggal >= 1 ) {
+        return 'Kuartal 2 (Spring)';
+      }
+      if ( (6 <= $angkaBulan AND $angkaBulan <= 8) AND $angkaTanggal >= 1 ) {
+        return 'Kuartal 3 (Summer)';
+      }
+      if ( (9 <= $angkaBulan AND $angkaBulan <= 11) AND $angkaTanggal >= 1 ) {
+        return 'Kuartal 4 (Fall)';
+      }
+    }
+
+    foreach ($anime_ids as $key => $anime_id) {
+      $data_raw = json_decode(file_get_contents( base_url() . 'Kitsu_api/id/' . $anime_id ), true);
+
+      // $append = [];
+      // $append['id'] = $data_raw['data']['id'];
+      // $append['poster'] = $data_raw['data']['attributes']['posterImage']['tiny'];
+      // $append['titles'] = $data_raw['data']['attributes']['titles']['en_jp'] .' - ['. $data_raw['data']['attributes']['titles']['ja_jp'] . ']';
+      // $append['showType'] = $data_raw['data']['attributes']['showType'];
+      // $append['kitsu'] = $data_raw['data']['links']['self'];
+
+      #
+      $data_anime = $data_raw;
+      #
+
+      
+      $startDate = explode('-', $data_anime['data']['attributes']['startDate']);
+
+      // masukin data musimnya
+      $data = [
+        'musim' => $startDate[0] . ' ' . convertDateToSeason($startDate[1], $startDate[2])
+      ];
+      $this->updateFile($data, $anime_id);
+      $count++;
+    }
+    
+    echo '<pre>'; var_dump( 'SELESAI. JUMLAH ANIME Diubah Musimnya: ' . $count ); die;
   }
 
   public function updateFile($data, $anime_id)

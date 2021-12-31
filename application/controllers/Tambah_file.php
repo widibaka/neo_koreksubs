@@ -40,7 +40,7 @@ class Tambah_file extends CI_Controller {
 		}
 
     $data['data_anime'] = json_decode(file_get_contents( base_url() . 'Kitsu_api/id/' . $anime_id ), true);
-
+// echo '<pre>'; var_dump(  $data['data_anime'] ); die;
 		$this->load->view('templates/header', $data);
 		$this->load->view('tambah_file', $data);
 		$this->load->view('templates/footer', $data);

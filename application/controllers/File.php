@@ -11,7 +11,8 @@ class File extends CI_Controller {
 	function index(){
 		$data['thead'] = $this->File_model->get_column();
 		array_pop($data['thead']);
-		array_pop($data['thead']); // ada dua kolom yang tak perlu ditampilkan
+		array_pop($data['thead']);
+		array_pop($data['thead']); // ada 3 kolom yang tak perlu ditampilkan
 
 		$anime_ids = $this->File_model->get_koleksi(8);
 		$data['anime_terbaru']=[];
