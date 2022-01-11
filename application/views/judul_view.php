@@ -1,6 +1,5 @@
-<div class="bd-cheatsheet container-fluid bg-body">
+<div class="bd-cheatsheet container-fluid">
   <section id="content">
-    <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3"></h2>
 
     <article class="my-3" id="typography">
 

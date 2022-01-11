@@ -14,7 +14,7 @@ class File extends CI_Controller {
 		array_pop($data['thead']);
 		array_pop($data['thead']); // ada 3 kolom yang tak perlu ditampilkan
 
-		 $anime_ids = $this->File_model->get_koleksi(8);
+		$anime_ids = $this->File_model->get_koleksi(8);
 		$data['anime_terbaru']=[];
 		// ambil data dari kitsu api
     foreach ($anime_ids as $key => $anime_id) {
@@ -23,7 +23,13 @@ class File extends CI_Controller {
       $append = [];
       $append['id'] = $data_raw['data']['id'];
       $append['poster'] = $data_raw['data']['attributes']['posterImage']['small'];
-      $append['titles'] = $data_raw['data']['attributes']['titles']['en_jp'] .' - ['. $data_raw['data']['attributes']['titles']['ja_jp'] . ']';
+      $append['total_episode'] = $data_raw['data']['attributes']['episodeCount'];
+      $append['titles'] = $data_raw['data']['attributes']['titles']['en_jp'];
+			if ( empty($append['titles']) ) {
+				$append['titles'] = $data_raw['data']['attributes']['titles']['en_en'];
+			}
+
+      $append['episode_digarap'] = $this->File_model->getLatestEpisodeOfAnime($anime_id); //<-- ini nanti untuk menunjukkan progres garapan
 
       $data['anime_terbaru'][] = $append;
     }

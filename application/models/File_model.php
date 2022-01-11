@@ -19,6 +19,14 @@ class File_model extends CI_Model {
 
 	////////////////////////////////////////////////////////////////////////////
 
+	public function getLatestEpisodeOfAnime($anime_id) //<-- mendapatkan episode yang terakhir digarap, untuk menunjukkan progres
+	{
+		$this->db->where("anime_id", $anime_id);
+		$this->db->order_by("episode", "DESC");
+		$this->db->limit(1);
+		return (int)$this->db->get($this->table)->row_array()['episode'];
+	}
+
 	public function tambah_click_count($id_file)
 	{
 		$query = $this->db->query('UPDATE '.$this->table.' SET click_count = click_count + 1 WHERE id_file = "'. $id_file . '"');

@@ -1,11 +1,10 @@
 
-<div class="bd-cheatsheet container-fluid bg-body">
+<div class="bd-cheatsheet container-fluid">
   <section id="content">
-    <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3"></h2>
 
     <article class="my-3" id="typography">
 
-      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div style="opacity: 0;" class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         
       </div>
       
@@ -32,10 +31,14 @@
             <div class="me-2 mb-4">
               <a href="<?php echo base_url() . 'judul/?anime_id=' . $ani['id'] ?>" title="<?php echo $ani['titles'] ?>">
                 <img style="max-height: 250px;" class="shadow " src="<?php echo $ani['poster'] ?>" alt="">
+                <div class="progress" style="border-radius: 0%;">
+                  <div class="progress-bar" role="progressbar" style="width: <?php echo $ani['episode_digarap']/( empty($ani['total_episode']) ? 5 : $ani['total_episode'] )*100 ?>%; background-color:#688cf3!important;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <?php echo $ani['episode_digarap'] ?> / <?php echo ( empty($ani['total_episode']) ? "?" : $ani['total_episode'] ) ?>
+                  </div>
+                </div>
               </a>
               
               <?php if ( !empty($this->session->userdata('email')) ): ?>
-                <br>
                 <a href="<?php echo base_url() . 'tambah_file/proses/' . $ani['id'] ?>" >[+Episode]</a>
               <?php endif ?>
             </div>

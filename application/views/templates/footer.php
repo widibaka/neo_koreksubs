@@ -1,4 +1,4 @@
-<div class="bd-cheatsheet bg-body p-0">
+<div class="bd-cheatsheet p-0">
     <article>
 
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
