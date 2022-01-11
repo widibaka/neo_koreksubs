@@ -57,7 +57,7 @@ class File_model extends CI_Model {
 		$query = "SELECT DISTINCT `anime_id`, `waktu` 
 				FROM `$this->table`
 				ORDER BY `waktu` DESC
-				LIMIT 20";
+				LIMIT 200";
 		$data = $this->db->query( $query )->result_array();
 		$data2 = [];
 		foreach ($data as $key => $value) {

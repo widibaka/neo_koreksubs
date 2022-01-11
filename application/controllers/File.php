@@ -14,7 +14,7 @@ class File extends CI_Controller {
 		array_pop($data['thead']);
 		array_pop($data['thead']); // ada 3 kolom yang tak perlu ditampilkan
 
-		$anime_ids = $this->File_model->get_koleksi(8);
+		 $anime_ids = $this->File_model->get_koleksi(8);
 		$data['anime_terbaru']=[];
 		// ambil data dari kitsu api
     foreach ($anime_ids as $key => $anime_id) {
