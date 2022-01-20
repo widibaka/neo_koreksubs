@@ -28,11 +28,11 @@
           <h3 class="m-0 p-0 mb-3">Koleksi Terbaru</h3>
           <div class="col-12 text-center d-flex justify-content-center" style="flex-wrap: wrap;">
           <?php foreach ($anime_terbaru as $key => $ani): ?>
-            <div class="me-2 mb-4">
+            <div class="mb-4 pe-1">
               <a href="<?php echo base_url() . 'judul/?anime_id=' . $ani['id'] ?>" title="<?php echo $ani['titles'] ?>">
-                <img style="max-height: 250px;" class="shadow " src="<?php echo $ani['poster'] ?>" alt="">
-                <div class="progress" style="border-radius: 0%;">
-                  <div class="progress-bar" role="progressbar" style="width: <?php echo $ani['episode_digarap']/( empty($ani['total_episode']) ? 5 : $ani['total_episode'] )*100 ?>%; background-color:#688cf3!important;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                <img style="max-height: 226px;" class="shadow " src="<?php echo $ani['poster'] ?>" alt="">
+                <div class="progress" style="border-radius: 0%; opacity:.8;">
+                  <div class="progress-bar" role="progressbar" style="width: <?php $persen = $ani['episode_digarap']/( empty($ani['total_episode']) ? 5 : $ani['total_episode'] )*100; echo $persen ?>%; background-color:<?php echo ($persen != 100) ? '#3c64d4' : '#40b439' ?>!important;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                     <?php echo $ani['episode_digarap'] ?> / <?php echo ( empty($ani['total_episode']) ? "?" : $ani['total_episode'] ) ?>
                   </div>
                 </div>
